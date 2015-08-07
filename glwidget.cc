@@ -731,6 +731,26 @@ GLWidget *GLWidget::getGLWidget2()
                                  modelViewMatrix);
     fclose(stdout);
     return res;
+	qDebug() << test for github << endl;
+	/*
+	sadfj
+	.....
+	hjkh
+	
+	
+	sdfds
+	efsg
+	
+	gamedevdf
+	gamedevdffg
+	
+	df
+	gamedevfg
+	datafgd
+	
+	sasd
+	
+	*/
 }
 
 
