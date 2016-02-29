@@ -28,44 +28,6 @@ SOURCES += \
 
 OTHER_FILES += shader/*.vert shader/*.frag
 
-DEFINES += _USE_MATH_DEFINES
-
-win32 {
-    DP_TOOLS_DIR = $$(DP_TOOLS_DIR)
-
-    # OpenMesh
-    INCLUDEPATH += $$DP_TOOLS_DIR/openmesh/include
-    LIBS += -L$$DP_TOOLS_DIR/openmesh/lib/vs2013 -lOpenMeshCored
-
-    # assimp
-    LIBS += -L$$DP_TOOLS_DIR/assimp-3.1.1-win-binaries/build/code/Release -lassimp
-    INCLUDEPATH += $$DP_TOOLS_DIR/assimp-3.1.1-win-binaries/include
-
-    # glew
-    INCLUDEPATH += $$DP_TOOLS_DIR/glew/include
-    LIBS += -L$$DP_TOOLS_DIR/glew/lib/Release/Win32 -lglew32
-}
-
-# glm
-INCLUDEPATH += D:/tools/glm
-
-defineTest(copyToDestdir) {
-    files = $$1
-
-    for(FILE, files) {
-        DDIR = $$OUT_PWD
-
-        # Replace slashes in paths with backslashes for Windows
-        win32:FILE ~= s,/,\\,g
-        win32:DDIR ~= s,/,\\,g
-
-        QMAKE_POST_LINK += $$QMAKE_COPY $$quote($$FILE) $$quote($$DDIR) $$escape_expand(\\n\\t)
-    }
-
-    export(QMAKE_POST_LINK)
-}
-copyToDestdir($$_PRO_FILE_PWD_/shader)
-
 HEADERS += \
     common.hh \
     mainwindow.hh \
@@ -83,10 +45,71 @@ HEADERS += \
     curvature.hh \
     colormap.hh
 
-#opencv
-INCLUDEPATH += D:\tools\opencv\build\include\opencv\
-                D:\tools\opencv\build\include\opencv2\
-                D:\tools\opencv\build\include
 
-LIBS += D:/tools/opencv/build/x86/vc12/lib/*.lib
+DEFINES += _USE_MATH_DEFINES GLM_FORCE_RADIANS
+
+# OpenMesh
+INCLUDEPATH += /usr/local/include
+LIBS += -lOpenMeshCore
+
+# assimp
+INCLUDEPATH += /usr/include/assimp
+LIBS += -lassimp
+
+# glew
+# INCLUDEPATH +=
+LIBS += -lGLEW -lGLU -lGL
+
+# glm
+INCLUDEPATH += usr/include/glm
+
+#opencv
+INCLUDEPATH += /usr/local/include \
+                /usr/local/include/opencv \
+                /usr/local/include/opencv2 \
+
+LIBS += /usr/local/lib/libopencv_aruco.so.3.1 \
+        /usr/local/lib/libopencv_bgsegm.so.3.1 \
+        /usr/local/lib/libopencv_bioinspired.so.3.1 \
+        /usr/local/lib/libopencv_calib3d.so.3.1 \
+        /usr/local/lib/libopencv_ccalib.so.3.1 \
+        /usr/local/lib/libopencv_core.so.3.1 \
+        /usr/local/lib/libopencv_datasets.so.3.1 \
+        /usr/local/lib/libopencv_dnn.so.3.1 \
+        /usr/local/lib/libopencv_dpm.so.3.1 \
+        /usr/local/lib/libopencv_face.so.3.1 \
+        /usr/local/lib/libopencv_features2d.so.3.1 \
+        /usr/local/lib/libopencv_flann.so.3.1 \
+        /usr/local/lib/libopencv_fuzzy.so.3.1 \
+        /usr/local/lib/libopencv_hdf.so.3.1 \
+        /usr/local/lib/libopencv_highgui.so.3.1 \
+        /usr/local/lib/libopencv_imgcodecs.so.3.1 \
+        /usr/local/lib/libopencv_imgproc.so.3.1 \
+        /usr/local/lib/libopencv_line_descriptor.so.3.1 \
+        /usr/local/lib/libopencv_ml.so.3.1 \
+        /usr/local/lib/libopencv_objdetect.so.3.1 \
+        /usr/local/lib/libopencv_optflow.so.3.1 \
+        /usr/local/lib/libopencv_photo.so.3.1 \
+        /usr/local/lib/libopencv_plot.so.3.1 \
+        /usr/local/lib/libopencv_reg.so.3.1 \
+        /usr/local/lib/libopencv_rgbd.so.3.1 \
+        /usr/local/lib/libopencv_saliency.so.3.1 \
+        /usr/local/lib/libopencv_sfm.so.3.1 \
+        /usr/local/lib/libopencv_shape.so.3.1 \
+        /usr/local/lib/libopencv_stereo.so.3.1 \
+        /usr/local/lib/libopencv_stitching.so.3.1 \
+        /usr/local/lib/libopencv_structured_light.so.3.1 \
+        /usr/local/lib/libopencv_superres.so.3.1 \
+        /usr/local/lib/libopencv_surface_matching.so.3.1 \
+        /usr/local/lib/libopencv_text.so.3.1 \
+        /usr/local/lib/libopencv_tracking.so.3.1 \
+        /usr/local/lib/libopencv_videoio.so.3.1 \
+        /usr/local/lib/libopencv_video.so.3.1 \
+        /usr/local/lib/libopencv_videostab.so.3.1 \
+        /usr/local/lib/libopencv_viz.so.3.1 \
+        /usr/local/lib/libopencv_xfeatures2d.so.3.1 \
+        /usr/local/lib/libopencv_ximgproc.so.3.1 \
+        /usr/local/lib/libopencv_xobjdetect.so.3.1 \
+        /usr/local/lib/libopencv_xphoto.so.3.1
+
 

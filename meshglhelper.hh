@@ -42,7 +42,7 @@ public:
 
         typename MeshT::VertexIter v_it, v_end(m_mesh.vertices_end());
         for (v_it = m_mesh.vertices_begin(); v_it != v_end; v_it++){
-            MeshT::Point pos = m_mesh.point(*v_it);
+            typename MeshT::Point pos = m_mesh.point(*v_it);
             vertices.push_back(pos[0]);
             vertices.push_back(pos[1]);
             vertices.push_back(pos[2]);
@@ -166,7 +166,7 @@ public:
 
         typename MeshT::VertexIter v_it, v_end(m_mesh.vertices_end());
         for (v_it = m_mesh.vertices_begin(); v_it != v_end; v_it++){
-            MeshT::Point pos = m_mesh.point(*v_it);
+            typename MeshT::Point pos = m_mesh.point(*v_it);
             vertices.push_back(pos[0]);
             vertices.push_back(pos[1]);
             vertices.push_back(pos[2]);
@@ -191,7 +191,7 @@ public:
         std::vector<GLfloat> vertices;
         typename MeshT::VertexIter v_it, v_end(m_mesh.vertices_end());
         for (v_it = m_mesh.vertices_begin(); v_it != v_end; v_it++){
-            MeshT::Point pos = m_mesh.point(*v_it);
+            typename MeshT::Point pos = m_mesh.point(*v_it);
             vertices.push_back(pos[0]);
             vertices.push_back(pos[1]);
             vertices.push_back(pos[2]);
@@ -212,7 +212,7 @@ public:
 
         typename MeshT::VertexIter v_it, v_end(m_mesh.vertices_end());
         for (v_it = m_mesh.vertices_begin(); v_it != v_end; v_it++){
-            MeshT::Point pos = m_mesh.point(*v_it);
+            typename MeshT::Point pos = m_mesh.point(*v_it);
             vertices.push_back(pos[0]);
             vertices.push_back(pos[1]);
             vertices.push_back(pos[2]);

@@ -130,7 +130,7 @@ void GLWidget::initializeGL()
                            glm::vec3(0.f),
                            glm::vec3(0.f,1.f,0.f));
 
-    m_programID = LoadShaders( "sphereShader.vert", "sphereShader.frag" );
+    m_programID = LoadShaders( "../3DFeature/shader/sphereShader.vert", "../3DFeature/shader/sphereShader.frag" );
 //    m_programID = LoadShaders( "sphereShader1.vert", "sphereShader1.frag" );
     GLuint vertexPosition_modelspaceID = glGetAttribLocation(m_programID, "vertexPosition_modelspace");
 //    GLuint vertexColorID = glGetAttribLocation(m_programID,"vertexColor");
@@ -575,7 +575,10 @@ GLWidget *GLWidget::getGLWidget3()
 
     qDebug()<<vertices.size()<<" "<<vertices2.size()<<endl;
 
-    GLWidget *res = new GLWidget(vertices2,glm::mat4(1.0),glm::mat4(1.0));
+    glm::mat4 tmpProj = glm::mat4(1.0);
+    glm::mat4 tmpMV = glm::mat4(1.0);
+
+    GLWidget *res = new GLWidget(vertices2,tmpProj,tmpMV);
     return res;
 }
 
@@ -691,10 +694,14 @@ GLWidget *GLWidget::getGLWidget6()
     //                         fea->faceIndices2,
     //                         m_proj,
     //                         modelViewMatrix);
+
+    glm::mat4 tmpProj = glm::mat4(1.0f);
+    glm::mat4 tmpMV = glm::mat4(1.0f);
+
     GLWidget *res = new GLWidget(fea->vertices2,
                                  fea->faceVis,
-                                 glm::mat4(1.0f),
-                                 glm::mat4(1.0f));
+                                 tmpProj,
+                                 tmpMV);
     return res;
 
 }
